@@ -4,24 +4,39 @@
 
 
     <div class="content col-xl-10">
-        <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
+      <h2>Productos en bodega</h2>
 
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
+        {% if list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Listado Productos</th>
+              <th scope="col">Cod.Producto</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Familia</th>
+              <th scope="col">Color</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Cant.Merma</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in list %}
+            <tr>
+              <th scope="row">{{x.pk}}</th>
+              <td>{{x.num_cuenta}}</td>
+              <td>{{x.nombre}}</td>
+              <td>{{x.familia}}</td>
+              <td>{{x.color}}</td>
+              <td>{{x.cantidad}}</td>
+              <td>{{x.precio}}</td>
+              <td>{{x.merma}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+
     </div>
 
 

@@ -14,6 +14,7 @@ load_family = [
 class Producto(models.Model):
 
     num_cuenta = models.BigIntegerField(null=False)
+    nombre = models.CharField(max_length=255, null=False)
     familia = models.CharField(max_length=255, null=False, choices=load_family, default='Hogar')
     color = models.CharField(max_length=255, null=False)
     descripcion = models.CharField(max_length=255, null=False)

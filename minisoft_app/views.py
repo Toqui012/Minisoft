@@ -42,4 +42,5 @@ def logout_view(request):
 
 
 def bodega(request):
-    return render(request,'bodega.html')
+    list = Producto.objects.all()
+    return render(request,'bodega.html',{'list':list})
