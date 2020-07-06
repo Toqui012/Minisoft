@@ -24,15 +24,17 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'index' %}">
                     <i class="fas fa-home"></i><span>Inicio</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'login_view' %}">
-                    <i class="fas fa-cash-register"></i><span>Abrir Caja</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">
-                    <i class="fas fa-cash-register"></i><span>Cerrar Caja</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">
-                    <i class="fas fa-cash-register"></i><span>Caja</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="fas fa-warehouse"></i><span>Bodega</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="fas fa-baseball-ball"></i><span>Strike</span></a></li>
-
+                    {% if user.is_authenticated %}
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#">
+                        <i class="fas fa-cash-register"></i><span>Caja</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'bodega' %}"><i class="fas fa-warehouse" data-toggle="dropwdown"></i><span>Bodega</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="fas fa-baseball-ball"></i><span>Strike</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout_view' %}">
+                        <i class="fas fa-cash-register"></i><span>Cerrar Caja</span></a></li>
+                    {% else %}
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'login_view' %}">
+                        <i class="fas fa-cash-register"></i><span>Abrir Caja</span></a></li>
+                    {% endif %}
                 </ul>
                 <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
