@@ -7,40 +7,14 @@
 <!--                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">-->
                 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background: #dfe6e9;">
                     <div class="container-fluid">
-                       <h2>こんにちは, Bienvenid@  a tu caja Miniso</h2>
+                       <h2>Konnichiwa, Bienvenid@  a tu caja Miniso</h2>
                        <div class="col-sm-2"><img src="{% static '/img/miniso.png' %}" alt="" style="width: 20%; height: 20%; margin-left: 75%;"></div>
                     </div>
                 </nav>
 
 
                 <div class="container-fluid">
-                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb 4">
-                            <h1>Fila 1 Columna 1</h1>
-                            <br>
-                            <h1>Listado de producto desde BD ejemplo</h1>
-                            {% if list %}
-                                {% for x in list %}
-                                    <h2>Codigo Producto: {{x.num_cuenta}}</h2>
-                                    <h2>Familia: {{x.familia}}</h2>
-                                    <h2>Color: {{x.color}}</h2>
-                                {% endfor %}
-                            
-                            {% else %}
-                               <h1>No hay nada registrado en bodega...</h1>
-                            {% endif %}
-                        </div>
-                        <div class="col-lg-6 mb 4">
-                            <h1>Fila 1 Columna 2</h1>
-                        </div>
-
-                    </div>
-                    <div class="row">
-
-                    </div>
+                 
                 </div>
             </div>
             <footer class="sticky-footer" style="background: #dfe6e9;">
