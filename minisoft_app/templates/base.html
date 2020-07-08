@@ -28,7 +28,7 @@
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#">
                         <i class="fas fa-cash-register"></i><span>Caja</span></a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'bodega' %}"><i class="fas fa-warehouse" data-toggle="dropwdown"></i><span>Bodega</span></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="fas fa-baseball-ball"></i><span>Strike</span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'strikes' %}"><i class="fas fa-baseball-ball"></i><span>Strike</span></a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout_view' %}">
                         <i class="fas fa-cash-register"></i><span>Cerrar Caja</span></a></li>
                     {% else %}
@@ -45,6 +45,7 @@
         {% endblock content %}
         
         <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        
     </div>
     <script src="{% static '/js/jquery.min.js' %} "></script>
     <script src="{% static '/js/bootstrap.min.js' %} "></script>

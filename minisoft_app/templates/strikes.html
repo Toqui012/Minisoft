@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<script>
+    function confirmOption(opcion, direccion){
+    if(confirm("Esta seguro que desea " + opcion)) {
+      window.location.href = direccion;
+    }
+  }
+</script>
+
+<div class="content col-xl-10">
+    <br>
+    <h2>Listado de Strikes</h2>
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-light" href="{% url 'add_strike' %}">Agregar Strike<span class="sr-only"></span></a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    {% if status == 'DELETED' %}
+    <div class="alert alert-success mt-1" role="alert">
+      <h6>Strike Borrado Satisfactoriamente</h6>
+    </div>
+    {% elif status == 'ERROR' %}
+    <div class="alert alert-danger mt-1" role="alert">
+      <h6>Ha ocurrido un problema al borrar el strike</h6>
+    </div>
+    {% endif %}
+    <br>
+
+    {% if list %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Rut</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for x in list %}
+          <tr>
+            <th scope="row">{{x.pk}}</th>
+            <td>{{x.rut}}</td>
+            <td>{{x.nombre}}</td>
+            <td>{{x.apellido}}</td>
+            <td>{{x.correo}}</td>
+            <td>{{x.cantidad}}</td>
+            <td><button style="font-size:16px; width: 6vw;" class="btn btn-danger" onclick="confirmOption('eliminar','/delete_strike/{{x.pk}}')"><i class="fa fa-trash"></i></button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+        {% endif %}
+</div>
+{% endblock %}

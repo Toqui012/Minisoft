@@ -3,8 +3,79 @@
 {% block content %}
 
 
-    <div class="content col-xl-10">
+    <div class="content col-xl-9">
+      <br>
       <h2>Productos en bodega</h2>
+      {% if status == 'SEARCH' %}
+        <div class="alert alert-success" role="alert">
+          <h6>Productos Encontrados Exitosamente</h6>
+        </div>
+      {% elif status == 'SEARCHFamilia' %}
+        <div class="alert alert-warning" role="alert">
+          <h6>No se han encontrado productos con ese color pero si productos de esa familia</h6>
+        </div>
+      {% elif status == 'SEARCHColor' %}
+        <div class="alert alert-warning" role="alert">
+          <h6>No se han encontrado productos con esa familia pero si productos con ese color</h6>
+        </div>
+      {% elif status == 'NOTSEARCH' %}
+        <div class="alert alert-danger" role="alert">
+          <h6>No se encontró ningun producto de esa familia</h6>
+        </div>
+      {% endif %}
+
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-light" href="{% url 'mermas' %}">Ver Mermas<span class="sr-only"></span></a>
+            </li>
+          </ul>
+          <form class="form-inline" method="POST">{% csrf_token %}
+            <!-- <div class="form-group mb-2">
+              <label for="staticEmail2" class="sr-only">Email</label>
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Clasificar Familia">
+            </div>
+    
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="inputPassword2" class="sr-only">Password</label>
+              <input type="password" class="form-control" id="inputPassword2" placeholder="Ingrese la familia a filtrar">
+            </div>
+            <button type="submit" class="btn btn-danger mb-2">Filtrar</button> -->
+    
+            <div class="form-group mb-2">
+              <label for="selectorFamilia " class="mr-2 text-light " style="font-size: 23px;">Familia:</label>
+                <select name="selectorFamilia" id="selectorFamilia" class="form-control">
+                  <option value="Hogar">Hogar</option>
+                  <option value="Viaje">Viaje</option>
+                  <option value="Jugueteria">Jugueteria</option>
+                  <option value="Salud y Belleza">Salud y Belleza</option>
+                  <option value="Deportes">Deportes</option>
+                  <option value="Licencia">Licencia</option>
+                </select>
+
+                <div class="form-group ml-2">
+                  <label class="mr-2 text-light" style="font-size: 23px;">Color:</label>
+                  <input class="form-control" type="text" name="txtColorBusca" placeholder="Ingrese un color">
+                </div>
+    
+                <div class="form-group" style="margin-left: 12px;">
+                  <button type="submit" name="submit" class="btn text-light" style="background-color: #e84118; border-color: darkgrey;">Buscar</button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </nav>
+
+      <br>
+
+     
+
+     
+
+
+
 
         {% if list %}
         <table class="table">
@@ -17,7 +88,7 @@
               <th scope="col">Color</th>
               <th scope="col">Stock</th>
               <th scope="col">Valor</th>
-              <th scope="col">Cant.Merma</th>
+              <th scope="col">Merma</th>
             </tr>
           </thead>
           <tbody>

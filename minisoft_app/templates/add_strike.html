@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="content col-xl-10">
+    <br>
+    <h2>Listado de Strikes</h2>
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-light" href="{% url 'strikes' %}">Regresar al listado general<span class="sr-only"></span></a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+
+    {% if status == 'OK' %}
+    <div class="alert alert-success mt-1" role="alert">
+      <h6>Strike Agregado Certeramente</h6>
+    </div>
+    {% elif status == 'ERROR' %}
+    <div class="alert alert-danger mt-1" role="alert">
+      <h6>Ha ocurrido un problema al añadir el strike</h6>
+    </div>
+    {% endif %}
+    <br>
+
+    <div class="content col-xl-10">
+        <form method="POST">{% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputEmail1">Rut Amolestado</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" name="txtRut"  placeholder="Ingrese el Rut">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Nombre</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" name="txtNombre" placeholder="Ingrese el Nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Apellido</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" name="txtApellido" placeholder="Ingrese el Apellido">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Correo Electronico</label>
+                <input type="email" class="form-control" id="exampleInputPassword1" name="txtCorreo" placeholder="Ingrese el Correo Electronico">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Cantidad</label>
+                <input type="number" class="form-control" id="exampleInputPassword1" name="txtCantidad" placeholder="Ingrese la Cantidad">
+            </div>
+            <button type="submit" class="btn btn-danger mb-2 mb-1">Agregar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

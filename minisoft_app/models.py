@@ -25,3 +25,16 @@ class Producto(models.Model):
     def __str__(self):
         return str(self.pk)
 
+
+class Strike(models.Model):
+
+    rut = models.CharField(max_length=10, null=False)
+    nombre = models.CharField(max_length=255, null=False)
+    apellido = models.CharField(max_length=255, null=False)
+    correo = models.EmailField(max_length=255)
+    cantidad = models.BigIntegerField(null=False)
+
+    def __str__(self):
+        return str(self.pk)
+    
+
